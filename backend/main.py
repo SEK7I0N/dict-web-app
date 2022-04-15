@@ -3,6 +3,7 @@ main.py
 """
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from controller.dictionary import (get_word_details_from_api,
                                    get_word_meanings_from_api,
@@ -10,6 +11,13 @@ from controller.dictionary import (get_word_details_from_api,
 
 app = FastAPI()
 
+orgins =['https://localhost:3000', 'http://localhost:3000']
+
+app.add_middleware(middleware_class=CORSMiddleware,
+                allow_origins=orgins,
+                allow_credentials=True,
+                allow_methods=['*'],
+                allow_headers=['*'])
 
 @app.get("/")
 def read_root():
