@@ -26,7 +26,9 @@ def read_root():
     Returns:
         _type_: json of hello world
     """
-    return {"Hello": "World"}
+    return {"Hello": "World",
+    "redoc": 'http://127.0.0.1:8000/redoc',
+    "docs": 'http://127.0.0.1:8000/docs'}
 
 @app.get("/word_meanings/{word}",tags=['Dictionary'])
 async def get_word_meanings(word: str):
